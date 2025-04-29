@@ -1,0 +1,7 @@
+CREATE TABLE Room(
+    id UUID PRIMARY KEY NOT NULL,
+    title VARCHAR(120) NOT NULL,
+    price FLOAT NOT NULL,
+    img VARCHAR(255) NOT NULL,
+    descr VARCHAR(360) NOT NULL
+);
