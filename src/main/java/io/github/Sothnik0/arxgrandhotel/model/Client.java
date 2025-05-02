@@ -1,6 +1,7 @@
 package io.github.Sothnik0.arxgrandhotel.model;
 
 import io.github.Sothnik0.arxgrandhotel.enums.Gender;
+import io.github.Sothnik0.arxgrandhotel.enums.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,9 +19,13 @@ import java.time.LocalDateTime;
 public class Client {
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    private String login;
+    private String password;
     private String name;
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    @Enumerated(EnumType.STRING)
+    private Roles role;
     private LocalDateTime arrival;
     private int nightAmount;
     private int clientAmount;
