@@ -30,4 +30,14 @@ public class Client {
     private int nightAmount;
     private int clientAmount;
     private String message;
+
+    //Contrutor para registro ai
+    public Client(String login, String password, String name, Gender gender, Roles role, String message) {
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.gender = gender;
+        this.role = role;
+        this.message = message;
+    }
 }

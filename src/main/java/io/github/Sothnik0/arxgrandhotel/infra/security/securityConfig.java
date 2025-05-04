@@ -21,10 +21,15 @@ public class securityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**", "/login", "/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/public/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        //Mudar isso aqui depois
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/hotel/**").hasRole("ADMIN")
+                        .requestMatchers("/user/**", "/hotel/all").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/hotel/new").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/usuarios/cadastrando").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/usuarios/cadastrados").hasAnyRole("USER", "ADMIN")
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
