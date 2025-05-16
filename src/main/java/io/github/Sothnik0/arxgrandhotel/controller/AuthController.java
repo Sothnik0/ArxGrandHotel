@@ -1,6 +1,6 @@
 package io.github.Sothnik0.arxgrandhotel.controller;
 
-import io.github.Sothnik0.arxgrandhotel.model.ClientDTO;
+import io.github.Sothnik0.arxgrandhotel.model.LoginDTO;
 import io.github.Sothnik0.arxgrandhotel.model.userSecurity.AuthDTO;
 import io.github.Sothnik0.arxgrandhotel.model.userSecurity.RegisterDTO;
 import io.github.Sothnik0.arxgrandhotel.services.Utilities;
@@ -20,7 +20,7 @@ public class AuthController {
     private Utilities utilities;
 
     @PostMapping("/login")
-    public ResponseEntity<ClientDTO> login(@RequestBody AuthDTO data){
+    public ResponseEntity<LoginDTO> login(@RequestBody AuthDTO data){
         return utilities.login(data);
     }
 

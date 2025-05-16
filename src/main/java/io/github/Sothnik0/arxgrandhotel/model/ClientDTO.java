@@ -5,8 +5,8 @@ import io.github.Sothnik0.arxgrandhotel.enums.Roles;
 
 import java.time.LocalDateTime;
 
-public record ClientDTO (String id, String name, String login, String password, Gender gender, Roles role, LocalDateTime arrival, int nightAmount, int clientAmount, String message){
+public record ClientDTO (String id, String name, String login, String password, String email, Gender gender, Roles role, LocalDateTime arrival, int nightAmount, int clientAmount, String message){
     public ClientDTO(Client client){
-        this(client.getId(), client.getName(), client.getLogin(), client.getPassword(), client.getGender(), client.getRole(), client.getArrival(), client.getNightAmount(), client.getClientAmount(), client.getMessage());
+        this(client.getId(), client.getName(), client.getLogin(), client.getPassword(), client.getEmail(), client.getGender(), client.getRole(), client.getArrival(), client.getNightAmount(), client.getClientAmount(), client.getMessage());
     }
 }

@@ -22,6 +22,7 @@ public class Client {
     private String login;
     private String password;
     private String name;
+    private String email;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     @Enumerated(EnumType.STRING)
@@ -32,10 +33,11 @@ public class Client {
     private String message;
 
     //Contrutor para registro ai
-    public Client(String login, String password, String name, Gender gender, Roles role, String message) {
+    public Client(String login, String password, String name, String email, Gender gender, Roles role, String message) {
         this.login = login;
         this.password = password;
         this.name = name;
+        this.email = email;
         this.gender = gender;
         this.role = role;
         this.message = message;
