@@ -45,9 +45,9 @@ public class SecurityConfig {
 
                         .anyRequest().authenticated()
                 )
-                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)  // Adiciona o filtro de segurança para verificar o token
+                .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // Configuração sem estado (stateless), pois estamos usando JWT
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 );
         return http.build();
 

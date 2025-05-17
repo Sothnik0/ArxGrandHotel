@@ -2,6 +2,7 @@ package io.github.Sothnik0.arxgrandhotel.services;
 
 import io.github.Sothnik0.arxgrandhotel.model.*;
 import io.github.Sothnik0.arxgrandhotel.model.userSecurity.AuthDTO;
+import io.github.Sothnik0.arxgrandhotel.model.userSecurity.ClientDetails;
 import io.github.Sothnik0.arxgrandhotel.model.userSecurity.RegisterDTO;
 import io.github.Sothnik0.arxgrandhotel.repository.ClientRepository;
 import io.github.Sothnik0.arxgrandhotel.repository.RoomRepository;
@@ -23,6 +24,7 @@ public class Utilities {
     private final AuthenticationManager authenticationManager;
 
     private final PasswordEncoder passwordEncoder;
+
 
     @Autowired
     private TokenServices tokenServices;
@@ -110,7 +112,7 @@ public class Utilities {
     public ResponseEntity<LoginDTO> login(AuthDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
-        var token = tokenServices.generateToken((Client) auth.getPrincipal());
+        var token = tokenServices.generateToken((ClientDetails) auth.getPrincipal());
 
         return ResponseEntity.ok(new LoginDTO(token));
     }

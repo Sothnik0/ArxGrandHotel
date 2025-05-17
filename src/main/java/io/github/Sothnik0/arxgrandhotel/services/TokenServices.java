@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import io.github.Sothnik0.arxgrandhotel.model.Client;
+import io.github.Sothnik0.arxgrandhotel.model.userSecurity.ClientDetails;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +18,11 @@ public class TokenServices {
     @Value("${api.security.token.secret}")
     private String secret;
 
-    public String generateToken(Client client) {
+    public String generateToken(ClientDetails client) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secret);
 
-            String login = client.getLogin(); // Ou getEmail() se você usar email como login
+            String login = client.getUsername();
             System.out.println("Gerando token para login: " + login);
 
             return JWT.create()
